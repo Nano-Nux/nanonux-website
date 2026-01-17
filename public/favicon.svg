@@ -1,0 +1,87 @@
+<svg id="logoSvg3" viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- N (stylized) - color1 -->
+            <g id="nanoN1_3" fill="#000" transform="translate(58,30)">
+              <rect x="0" y="0" width="20" height="80" rx="4" fill="#1E3A8A"/>
+              <rect x="0" y="0" width="60" height="20" rx="4" fill="#1E3A8A"/>
+              <rect x="40" y="0" width="20" height="80" rx="4" fill="#1E3A8A"/>
+            </g>
+
+            <!-- A (stylized) - color1 -->
+            <g id="nanoA_3" fill="#000" transform="translate(138,30)">
+              <polygon points="30,0 60,80 50,80 45,60 15,60 10,80 0,80" fill="#1E3A8A"/>
+              <rect id="nanoAbar_3" x="20" y="45" width="20" height="8" rx="2" fill="#1E3A8A"/>
+            </g>
+
+            <!-- N (stylized) - color1 -->
+            <g id="nanoN2_3" fill="#000" transform="translate(218,30)">
+              <rect x="0" y="0" width="20" height="80" rx="4" fill="#1E3A8A"/>
+              <rect x="0" y="0" width="60" height="20" rx="4" fill="#1E3A8A"/>
+              <rect x="40" y="0" width="20" height="80" rx="4" fill="#1E3A8A"/>
+            </g>
+
+            <!-- O as CPU chip (no QR) copied from second logo -->
+            <g id="cpuO_3" transform="translate(340,70)">
+              <!-- CPU body (same size as logo 2, slightly thicker stroke) -->
+              <rect id="cpuBody_3" x="-33" y="-33" width="66" height="66" rx="4" fill="none" stroke="#E5B80B" stroke-width="8"/>
+              
+              <!-- Circuit board pins/legs (left) -->
+              <g id="cpuPinsLeft_3" stroke="#000" stroke-width="3" stroke-linecap="round">
+                <line x1="-33" y1="-20" x2="-45" y2="-20" stroke="#E5B80B"/>
+                <line x1="-33" y1="-10" x2="-45" y2="-10" stroke="#E5B80B"/>
+                <line x1="-33" y1="0" x2="-45" y2="0" stroke="#E5B80B"/>
+                <line x1="-33" y1="10" x2="-45" y2="10" stroke="#E5B80B"/>
+                <line x1="-33" y1="20" x2="-45" y2="20" stroke="#E5B80B"/>
+              </g>
+              
+              <!-- Circuit board pins/legs (right) -->
+              <g id="cpuPinsRight_3" stroke="#000" stroke-width="3" stroke-linecap="round">
+                <line x1="33" y1="-20" x2="45" y2="-20" stroke="#E5B80B"/>
+                <line x1="33" y1="-10" x2="45" y2="-10" stroke="#E5B80B"/>
+                <line x1="33" y1="0" x2="45" y2="0" stroke="#E5B80B"/>
+                <line x1="33" y1="10" x2="45" y2="10" stroke="#E5B80B"/>
+                <line x1="33" y1="20" x2="45" y2="20" stroke="#E5B80B"/>
+              </g>
+              
+              <!-- Circuit board pins/legs (top) -->
+              <g id="cpuPinsTop_3" stroke="#000" stroke-width="3" stroke-linecap="round">
+                <line x1="-20" y1="-33" x2="-20" y2="-45" stroke="#E5B80B"/>
+                <line x1="-10" y1="-33" x2="-10" y2="-45" stroke="#E5B80B"/>
+                <line x1="0" y1="-33" x2="0" y2="-45" stroke="#E5B80B"/>
+                <line x1="10" y1="-33" x2="10" y2="-45" stroke="#E5B80B"/>
+                <line x1="20" y1="-33" x2="20" y2="-45" stroke="#E5B80B"/>
+              </g>
+              
+              <!-- Circuit board pins/legs (bottom) -->
+              <g id="cpuPinsBottom_3" stroke="#000" stroke-width="3" stroke-linecap="round">
+                <line x1="-20" y1="33" x2="-20" y2="45" stroke="#E5B80B"/>
+                <line x1="-10" y1="33" x2="-10" y2="45" stroke="#E5B80B"/>
+                <line x1="0" y1="33" x2="0" y2="45" stroke="#E5B80B"/>
+                <line x1="10" y1="33" x2="10" y2="45" stroke="#E5B80B"/>
+                <line x1="20" y1="33" x2="20" y2="45" stroke="#E5B80B"/>
+              </g>
+            </g>
+
+            <!-- NUX built from interconnected circuit lines (color2) -->
+            <g transform="translate(105,152)">
+              <g id="nuxCircuit_3" stroke="#000" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <g id="nuxNGroup_3" transform="translate(0,6)">
+                  <path id="nuxN_3" d="M0 -5 V75 L70 -5 V75" stroke="#9AA4B2"/>
+                  <path id="nuxNInner_3" stroke-width="5" d="M23 25 L46 45" stroke="#E5B80B"/>
+                  <path id="nuxNBridge_3" stroke-width="5" d="M70 36 H95" stroke="#E5B80B"/>
+                </g>
+
+                <path id="nuxU_3" d="M100 0 V45 Q100 82 135 82 Q170 82 170 45 V0" stroke="#9AA4B2"/>
+                <path id="uInner_3" stroke-width="6" d="M115 5 V42 Q115 65 135 65 Q155 65 155 42 V5" stroke="#E5B80B"/>
+                <path id="uBottomLink_3" stroke-width="5" d="M135 82 V98 H95" stroke="#E5B80B"/>
+
+                <path id="nuxX1_3" d="M200 0 L270 82" stroke="#9AA4B2"/>
+                <path id="nuxX2_3" d="M270 0 L200 82" stroke="#9AA4B2"/>
+                <path id="xBridge_3" stroke-width="4" d="M270 40 H305" stroke="#E5B80B"/>
+              </g>
+              <g id="nuxNodes_3" fill="#000">
+                <circle cx="100" cy="82" r="4" fill="#E5B80B"/>
+                <circle cx="170" cy="82" r="4" fill="#E5B80B"/>
+              </g>
+              <circle id="xBridgeNode_3" cx="305" cy="40" r="8" fill="#FF3B30" stroke="#E5B80B" stroke-width="3" data-fixed-fill="true"/>
+            </g>
+          </svg>
