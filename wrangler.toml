@@ -1,5 +1,4 @@
 name = "nanonux-website"
-main = "index.js" # Not used for Pages, but required for Workers
 compatibility_date = "2026-01-20"
 
 
