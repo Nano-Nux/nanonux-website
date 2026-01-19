@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { NextResponse } from "next/server";
 
 async function sendWithWeb3Forms(payload: { transcriptJson: any }) {
