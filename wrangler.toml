@@ -1,4 +1,13 @@
+
 name = "nanonux-website"
 compatibility_date = "2026-01-20"
+
+# Configure Cloudflare Pages build output directory so Pages recognizes this file
+# For Next.js, Cloudflare Pages expects the build output directory to be set to ".next"
+pages_build_output_dir = ".next"
+
+# Optional: provide a build command if you want Pages to run the build via wrangler
+[build]
+command = "npm run build"
 
 
