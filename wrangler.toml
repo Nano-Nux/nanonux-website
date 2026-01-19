@@ -1,0 +1,14 @@
+name = "nanonux-website"
+main = "index.js" # Not used for Pages, but required for Workers
+compatibility_date = "2026-01-20"
+
+# For Cloudflare Pages, this file is optional unless you use Pages Functions or Workers
+# If you deploy to Pages, you do NOT need to set main, but you can add environment variables here
+
+[env]
+WEB3FORMS_ACCESS_KEY = "d70bc78e-832d-41cc-a324-03292489591f"
+EMAIL_TO = "hello@nanonux.com"
+GEMINI_API_KEY = "AIzaSyBIFhVdjIYnqrB2cHsCH7hnJEhPBZqdgiI"
+GEMINI_MODEL = "gemini-2.5-flash-lite"
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY = "d70bc78e-832d-41cc-a324-03292489591f"
+NEXT_PUBLIC_EMAIL_TO = "hello@nanonux.com"
