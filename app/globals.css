@@ -40,7 +40,12 @@ html {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-gold) 100%);
+  background: linear-gradient(90deg,
+    var(--primary-blue) 0%,
+    var(--primary-blue) 50%,
+    #7a6a2a 70%,
+    var(--primary-gold) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -95,7 +100,7 @@ html {
   position: absolute;
   bottom: -8px;
   left: 0;
-  width: 60px;
+  width: 100px;
   height: 3px;
   background: var(--primary-gold);
   border-radius: 2px;
@@ -116,9 +121,117 @@ html {
 /* Nav link nudge - small vertical shift to visually center nav items */
 .nav-link {
   display: inline-block;
-  transform: translateY(7px);
+  transform: translateY(0px);
+  font-weight: normal;
   transition: transform 0.15s ease;
 }
 .nav-link:hover {
-  transform: translateY(5px);
+  color : var(--primary-blue);
+  font-weight: 900;
+}
+
+/* Chat Widget Styles */
+.chat-widget {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+/* Floating chat label with tail */
+.chat-widget .chat-float-label {
+  background: #7c3aed;
+  color: #fff;
+  position: relative;
+  border-radius: 1.25rem;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+}
+.chat-widget .chat-float-label:hover {
+  box-shadow: 0 4px 16px rgba(124,58,237,0.18);
+}
+.chat-widget .chat-float-tail {
+  position: absolute;
+  right: 1.5rem;
+  bottom: -10px;
+  width: 20px;
+  height: 12px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.chat-widget .chat-float-tail::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #7c3aed;
+  border-radius: 0 0 10px 10px;
+  transform: rotate(25deg) scaleY(0.6);
+  margin-left: 0px;
+  margin-top: -8px;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.10);
+}
+.chat-window .chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-window .chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(14,30,60,0.12);
+  border-radius: 999px;
+}
+.chat-bubble {
+  max-width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.chat-bubble.user {
+  background: #EFF6FF;
+  color: #0f172a;
+  align-self: flex-end;
+}
+.chat-bubble.assistant {
+  background: #F8FAFC;
+  color: #0f172a;
+  align-self: flex-start;
+}
+
+/* Responsive chat widget adjustments */
+@media (max-width: 640px) {
+  .chat-widget {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+  .chat-widget button {
+    padding: 0.625rem;
+  }
+  .chat-widget button svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Mobile nav padding adjustment to avoid content hidden behind fixed header */
+@media (max-width: 768px) {
+  main, section {
+    padding-top: 4rem;
+  }
+}
+
+/* Force footer logo to pure white using SVG mask */
+.logo-white {
+  background-color: white;
+  -webkit-mask: url('/logo/logo-cpu-noqr.svg') center / contain no-repeat;
+  mask: url('/logo/logo-cpu-noqr.svg') center / contain no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Fallback filter for browsers that don't support mask */
+@supports not ((-webkit-mask: url('/logo/logo-cpu-noqr.svg') center / contain no-repeat)) {
+  .logo-white {
+    background-image: url('/logo/logo-cpu-noqr.svg');
+    -webkit-filter: invert(1) grayscale(1) brightness(2);
+    filter: invert(1) grayscale(1) brightness(2);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
