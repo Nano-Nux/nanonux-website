@@ -1,6 +1,5 @@
-export const runtime = 'edge';
-
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 async function sendWithWeb3Forms(payload: { name: string; email: string; service?: string; message: string }) {
   const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
@@ -70,27 +69,55 @@ export async function POST(req: Request) {
       console.error("[/api/contact] Diagnostics logging failed", e);
     }
 
-    // Use Web3Forms if configured (Edge-compatible HTTP API)
+    // If WEB3FORMS_ACCESS_KEY is provided, use Web3Forms (free tier supported by their API)
     if (process.env.WEB3FORMS_ACCESS_KEY) {
       const webRes = await sendWithWeb3Forms({ name, email, service, message });
       if (webRes.ok) return NextResponse.json({ ok: true, message: "Email sent via Web3Forms" });
-      // If Web3Forms failed, return error
-      return NextResponse.json({ ok: false, message: "Failed to send via Web3Forms", detail: webRes }, { status: 502 });
+      // if web3forms failed, fall through to try SMTP (if configured)
     }
 
-    // No Edge-compatible email provider configured
-    return NextResponse.json(
-      {
-        ok: false,
-        message:
-          "Email sending is not configured for Edge runtime. Set WEB3FORMS_ACCESS_KEY to enable email forwarding via Web3Forms.",
-        diagnostics: {
-          WEB3FORMS_ACCESS_KEY_present: !!process.env.WEB3FORMS_ACCESS_KEY,
-          EMAIL_TO: process.env.EMAIL_TO || null,
+    // Check for SMTP configuration
+    const host = process.env.SMTP_HOST;
+    const port = process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined;
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    const to = process.env.EMAIL_TO || process.env.SMTP_USER;
+
+    if (!host || !port || !user || !pass || !to) {
+      // Neither SMTP nor Web3Forms configured — return 501 with helpful message and diagnostics
+      const web3Key = process.env.WEB3FORMS_ACCESS_KEY;
+      return NextResponse.json(
+        {
+          ok: false,
+          message:
+            "Email sending is not configured. Set WEB3FORMS_ACCESS_KEY for Web3Forms or SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASS and EMAIL_TO for SMTP.",
+          diagnostics: {
+            WEB3FORMS_ACCESS_KEY_present: !!web3Key,
+            WEB3FORMS_ACCESS_KEY_length: web3Key ? String(web3Key).length : 0,
+            EMAIL_TO: process.env.EMAIL_TO || null,
+          },
         },
-      },
-      { status: 501 }
-    );
+        { status: 501 }
+      );
+    }
+
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465, // true for 465, false for other ports
+      auth: { user, pass },
+    });
+
+    const mail = {
+      from: `${name} <${email}>`,
+      to,
+      subject: `NANO NUX Contact: ${service || "General Inquiry"}`,
+      text: `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`,
+      html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Service:</strong> ${service}</p><p><strong>Message:</strong></p><p>${message.replace(/\n/g, "<br/>")}</p>`,
+    };
+
+    await transporter.sendMail(mail);
+    return NextResponse.json({ ok: true, message: "Email sent via SMTP" });
   } catch (err: any) {
     return NextResponse.json({ error: err?.message || "Server error" }, { status: 500 });
   }
