@@ -40,12 +40,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+  const orgJson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "NANO NUX",
+    url: siteUrl || "",
+    logo: siteUrl ? `${siteUrl.replace(/\/$/, '')}/logo.svg` : "/logo.svg",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "",
+        contactType: "customer service",
+        email: process.env.NEXT_PUBLIC_EMAIL_TO || process.env.EMAIL_TO || "",
+      },
+    ],
+  });
+
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${inter.variable} antialiased`}
       >
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: orgJson }}
+        />
       </body>
     </html>
   );
