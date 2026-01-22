@@ -102,7 +102,7 @@ export default function HomeContent({ translations, locale }: { translations: an
         <div className="max-w-7xl mx-auto text-center">
           <div className="animate-fade-in-up">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-[#1E3A8A] leading-tight">
-              <span className="gradient-text">{translations.heroTitleLine1}<br />Into Reality</span>
+              <span className="gradient-text">{translations.heroTitleLine1}<br />{translations.heroTitleLine2}</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">{translations.heroSubtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
