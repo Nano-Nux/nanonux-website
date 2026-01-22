@@ -180,12 +180,27 @@ html {
   outline: 3px solid rgba(30,58,138,0.12);
 }
 /* Remove rectangle/shadow from chat toggle and add hover shake */
-.chat-toggle button {
+.chat-toggle button:not(.chat-close-button) {
   background: transparent !important;
   box-shadow: none !important;
   padding: 0 !important;
   border: none !important;
   border-radius: 0 !important;
+}
+
+/* Specific styles for the close button wrapper so it doesn't show a rectangular shadow */
+.chat-toggle .chat-close-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 9999px !important;
+  box-shadow: none !important;
+  outline: none;
+  overflow: visible;
 }
 
 @keyframes chat-shake {

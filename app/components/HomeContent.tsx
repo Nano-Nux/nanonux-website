@@ -235,7 +235,7 @@ export default function HomeContent({ translations, locale }: { translations: an
               <h4 className="font-bold mb-4 text-[#E5B80B]">Contact</h4>
               <ul className="space-y-2 text-blue-200">
                 <li>{process.env.NEXT_PUBLIC_EMAIL_TO || 'hello@nanonux.com'}</li>
-                <li>+1 (555) 123-4567</li>
+                {/* <li>+1 (555) 123-4567</li> */}
               </ul>
             </div>
           </div>

@@ -101,7 +101,7 @@ export default function ContactForm({ services }: { services: any[] }) {
             onChange={(e) => setEmail(e.target.value)}
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E5B80B] transition-colors"
-            placeholder="hello@nanonux.com"
+            placeholder=".....@example.com"
           />
         </div>
       </div>

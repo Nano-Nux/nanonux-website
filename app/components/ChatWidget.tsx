@@ -91,7 +91,7 @@ export default function ChatWidget() {
         <button
           aria-label={open ? "Close chat" : "Open chat"}
           onClick={() => setOpen((s) => !s)}
-          className="p-0"
+          className={open ? "chat-close-button p-0" : "p-0"}
         >
           {open ? (
             <svg className="chat-close-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
